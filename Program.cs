@@ -1,10 +1,10 @@
 using CrudWebApi.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddDbContext<DbUsuContext>(Options =>
-Options.UseSqlServer(builder.Configuration.GetConnectionString("connectionDB"))
+var cs = builder.Configuration.GetConnectionString("connectionDB");
+builder.Services.AddDbContext<DbUsuContext>(options =>
+    options.UseMySql(cs, new MySqlServerVersion(new Version(8, 0, 36)))
 );
 // Add services to the container.
 

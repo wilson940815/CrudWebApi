@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Identity.Client;
 
 namespace CrudWebApi.Controllers
 {
@@ -18,6 +17,7 @@ namespace CrudWebApi.Controllers
 
         [HttpGet("Listar")]
        public async Task<ActionResult<IEnumerable<Usuary>>> ListarUsuario(){
+
             var usuarios= await _context.Usuaries.ToListAsync();
             return Ok(usuarios); //200
         }
